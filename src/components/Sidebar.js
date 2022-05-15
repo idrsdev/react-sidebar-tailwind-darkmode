@@ -23,8 +23,8 @@ const Sidebar = () => {
         <>
             <div
                 className={`${
-                    open ? 'w-72' : 'w-20'
-                } hidden sm:block relative h-screen duration-300 bg-gray-100 p-5 dark:bg-slate-800`}
+                    open ? 'w-60' : 'w-fit'
+                } hidden sm:block relative h-screen duration-300 bg-gray-100 border-r border-gray-200 dark:border-gray-600 p-5 dark:bg-slate-800`}
             >
                 <BsArrowLeftCircle
                     className={`${
@@ -33,24 +33,21 @@ const Sidebar = () => {
                     onClick={() => setOpen(!open)}
                 />
                 <Link to='/'>
-                    <div className='flex gap-x-4 items-center'>
-                        <img src={Logo} alt='' />
-                        <span
-                            className={`text-xl font-medium whitespace-nowrap dark:text-white ${
-                                !open && 'scale-0'
-                            }`}
-                        >
-                            Goal Quest
-                        </span>
+                    <div className={`flex ${open && 'gap-x-4'} items-center`}>
+                        <img src={Logo} alt='' className='pl-2' />
+                        {open && (
+                            <span className='text-xl font-medium whitespace-nowrap dark:text-white'>
+                                Goal Quest
+                            </span>
+                        )}
                     </div>
                 </Link>
 
                 <ul className='pt-6'>
                     {Menus.map((menu, index) => (
-                        <Link to={menu.path}>
+                        <Link to={menu.path} key={index}>
                             <li
-                                key={index}
-                                className={`flex items-center gap-x-4 p-3 text-base font-normal rounded-lg cursor-pointer dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700
+                                className={`flex items-center gap-x-6 p-3 text-base font-normal rounded-lg cursor-pointer dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700
                         ${menu.gap ? 'mt-9' : 'mt-2'} ${
                                     location.pathname === menu.path &&
                                     'bg-gray-200 dark:bg-gray-700'
