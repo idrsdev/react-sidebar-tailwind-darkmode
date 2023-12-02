@@ -43,15 +43,13 @@ const TELEGRAM_CHAT_ID = '-1002055987922';
 
 export const sendMessageToTelegram = async (message) => {
   try {
-    const formattedMessage = `${message}`;
     await axios.post(`${TELEGRAM_API}/sendMessage`, {
       chat_id: TELEGRAM_CHAT_ID,
-      text: formattedMessage,
-      parse_mode: 'Markdown',
+      text: message,
+      parse_mode: 'HTML',
     });
-    console.log('Message sent to Telegram successfully');
   } catch (error) {
-    console.error('Error sending message to Telegram', error);
+    console.error('Error sending message to Telegram:', error.response.data);
     throw error;
   }
 };
