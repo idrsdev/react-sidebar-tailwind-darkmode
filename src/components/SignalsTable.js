@@ -1,6 +1,7 @@
 // TradesTable.js
 import React, { useState } from "react";
 import { getPairData } from "../BinanceService";
+import { useNavigate } from "react-router-dom";
 
 const SignalsTable = () => {
   const [trades, setTrades] = useState([
@@ -21,7 +22,10 @@ const SignalsTable = () => {
     // ... more trades
   ]);
 
+  const navigate = useNavigate();
+
   const handleClose = async (tradeId) => {
+    navigate("/anes/");
     try {
       const tradeToClose = trades.find((trade) => trade.id === tradeId);
       if (tradeToClose) {
