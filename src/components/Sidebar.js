@@ -8,6 +8,7 @@ import { SiOpenaccess } from "react-icons/si";
 import { CgProfile } from "react-icons/cg";
 import Logo from "../assets/images/logo.svg";
 import HamburgerButton from "./HamburgerMenuButton/HamburgerButton";
+import Home from "../pages/Home";
 
 const Sidebar = () => {
   const [open, setOpen] = useState(true);
@@ -17,6 +18,7 @@ const Sidebar = () => {
   const Menus = [
     { title: "Dashboard", path: "/dashboard", src: <AiFillPieChart /> },
     { title: "App", path: "/app", src: <SiFuturelearn /> },
+    { title: "Home", path: "/home", src: <SiFuturelearn /> },
   ];
 
   return (
@@ -24,7 +26,7 @@ const Sidebar = () => {
       <div
         className={`${
           open ? "w-68" : "w-fit"
-        } hidden sm:block relative h-screen  duration-300 bg-gray-100 border-r border-gray-200 dark:border-gray-600 p-5 dark:bg-slate-800`}
+        } hidden sm:block relative h-full  duration-300 bg-gray-100 border-r border-gray-200 dark:border-gray-600 p-5 dark:bg-slate-800`}
       >
         <Link to="/">
           <div className={`flex ${open && "gap-x-4"} items-center`}>
